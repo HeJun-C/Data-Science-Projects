@@ -10,3 +10,4 @@
 * Natural Language Processing
 * Time Series Analysis
 * Statistical Analysis
+* Financial Analysis
