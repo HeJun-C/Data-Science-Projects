@@ -4,7 +4,7 @@
 * Analyze various datasets to provide intuitive data visualization and deliver actionable insights 
 * Build and fine-tune machine learning models to achieve regression/classificartion prediction
 
-**Topics range from:**
+**Topics covered:**
 * Data Cleaning, Engineering & Visualization
 * Structured Machine Learning Processes
 * Natural Language Processing
