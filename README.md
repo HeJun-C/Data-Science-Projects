@@ -1,10 +1,10 @@
 # Hejun Chen's Data Science Project Collection
-This repository collects and stores projects where I:
+**This repository collects and stores projects where I:**
 
 * analyze various datasets to provide intuitive data visualization and deliver actionable insights 
 * build and fine-tune machine learning models to achieve regression/classificartion prediction
 
-Topics range from:
+**Topics range from:**
 * data cleaning & engineering
 * structured machine learning processes
 * natural language processing
