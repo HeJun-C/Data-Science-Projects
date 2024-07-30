@@ -1,0 +1,308 @@
+*{
+    padding: 0;
+    margin: 0;
+    color: rgb(41, 41, 41);
+  }
+
+html{
+    scroll-behavior: smooth;
+}
+
+body {
+    /* background-image: url('images/iStock-2158525722.jpg'); */
+    background-image: url('images/gradient_video.mp4');
+    /* background-color:aliceblue; */
+    /* background-image: url('images/claude.png'); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "SF Compact", "SF Mono", "San Francisco", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+header {
+    position: fixed; /* Fixed position to keep it at the top */
+    width: 100%; /* Full width */
+    height: 45px;
+    z-index: 1000; /* Ensure it's above other content */
+    background-color: rgba(136, 136, 136, 0.6);
+    align-items: center; /* Center items vertically */
+    justify-content: center;
+    backdrop-filter: blur(10px) saturate(150%); /* Apply backdrop blur */
+    -webkit-backdrop-filter: blur(10px) saturate(150%); /* For Safari */
+    display: flex;
+}
+
+.social-logo{
+    height: 30px;
+    width: 30px;
+    margin-left: 40px;
+    transition: transform 0.25s ease;
+}
+
+.social-logo:hover{
+    height: 30px;
+    width: 30px;
+    transform: scale(1.15);
+}
+
+.grid-layout{
+    display:grid;
+    min-height: 120vh;
+    padding-top: 45px;
+    background-color: rgba(0, 0, 0, 0);
+    grid-template-columns: auto 1000px auto;
+    grid-auto-rows: 100%;
+}
+
+.sidebar.left{
+    grid-column: 1;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.main.area{
+    grid-column: 2;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.sidebar.right{
+    grid-column: 3;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.grid-container{
+    display: grid;
+    min-height: 100em;
+    background-color: rgba(0, 0, 0, 0);
+    padding-top: 55px;
+    padding-bottom: 27px;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 195px; 
+    grid-gap: 30px;
+}
+
+.title{
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 1;
+}
+
+.about{
+    grid-column: 1 / span 2;
+    grid-row: 2 / span 1;
+}
+
+.input {
+    grid-column: 1 / span 1;
+    grid-row: 3 / span 2;
+}
+
+.output {
+    grid-column: 2 / span 1;
+    grid-row: 3 / span 2;
+}
+
+.end {
+    grid-column: 1 / span 2;
+    grid-row: 5 / span 1;
+}
+
+.grid-item{
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 17px;
+    box-shadow: 1px 1px 15px rgba(46, 46, 46, 0.2);
+    /* opacity: 0;
+    transform: translateY(60px); */
+}
+
+
+.grid-item-banner{
+    /* banner structure */
+    width: 100%;
+    height: 88px;
+    border-radius: 17px 17px 0 0;
+    /* background-color: rgba(232,241,250,255); */
+    background: linear-gradient(to bottom, rgb(229, 241, 252, 0.4), rgba(232, 241, 250, 0));
+    /* text font */
+    font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", "Helvetica", "Arial", sans-serif;    font-size: 23px;
+    font-weight: 500;
+    /* text position */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.banner-icon {
+    width: 35px; /* Set width of the icon */
+    height: 35px; /* Set height of the icon */
+    margin-right: 20px; /* Space between the icon and text */
+    margin-left: 35px;
+}
+
+
+/* desktop input + */
+#inputForm {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 70%;
+}
+
+#userInput {
+    background-color: rgb(255, 255, 255, 0.3);
+    border: none;
+    border-radius: 16px;
+    margin-left: 35px;
+    margin-right: 35px;
+    padding-left: 10px;
+    padding-top: 7px;
+    width: 409px;
+    height: 237px;
+    font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", "Helvetica", "Arial", sans-serif; 
+    /* font-weight: 300s; */
+    font-weight: 415;
+    font-size: 15px;
+    line-height: 1.7;
+    resize: none;
+}
+
+#userInput::placeholder {
+    color: #999;
+    font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", "Helvetica", "Arial", sans-serif; 
+    /* font-weight: 300s; */
+    font-weight: 415;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+/* Custom scrollbar styles for WebKit-based browsers */
+#userInput::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+    border-radius: 17px;
+}
+
+#userInput::-webkit-scrollbar-track {
+    background: rgb(241, 241, 241, 0); /* Color of the scrollbar track */
+    border-radius: 17px;
+}
+
+#userInput::-webkit-scrollbar-thumb {
+    background: rgb(136, 136, 136, 0.6); /* Color of the scrollbar thumb */
+    border-radius: 17px; /* Rounded corners of the scrollbar thumb */
+
+}
+
+#userInput::-webkit-scrollbar-thumb:hover {
+    background: rgb(108, 108, 108, 0.6); /* Color of the scrollbar thumb when hovered */
+}
+
+#input-button {
+    margin-top: 23px;
+    margin-left: 350px;
+    height: 30px;
+    width: 90px;
+    border: none;
+    border-radius: 17px;
+    font-weight: bold; /* Font weight */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for background color and transform */
+}
+
+/* Hover effect for the button */
+#input-button:hover {
+    background-color: rgba(50, 168, 252, 0.283); /* Darker green on hover */
+    transform: scale(1.05); /* Slightly enlarge the button */
+}
+
+/* Focus effect for the button */
+#input-button:focus {
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 5px 2px rgba(50, 168, 252, 0.283); /* Custom shadow for focus state */
+}
+
+
+/* desktop input - */
+
+/* desktop output + */
+#output-area {
+    background-color: rgb(255, 255, 255, 0.3);
+    border: none;
+    border-radius: 16px;
+    margin-left: 35px;
+    margin-right: 35px;
+    padding-left: 10px;
+    padding-top: 7px;
+    width: 409px;
+    height: 234px;
+    font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", "Helvetica", "Arial", sans-serif; 
+    font-weight: 415;
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-y: auto;
+}
+
+#output-area::-webkit-scrollbar {
+    width: 12px; 
+    border-radius: 17px;
+}
+
+#output-area::-webkit-scrollbar-track {
+    background: rgb(241, 241, 241, 0); 
+    border-radius: 17px;
+}
+
+#output-area::-webkit-scrollbar-thumb {
+    background: rgb(136, 136, 136, 0.6); 
+    border-radius: 17px; 
+
+}
+
+#output-area::-webkit-scrollbar-thumb:hover {
+    background: rgb(108, 108, 108, 0.6); 
+}
+
+.masked-text {
+    background-color: rgb(80, 113, 234, 0.4);
+    border-radius: 4px;
+    transition: background-color 0.3s ease, border 0.3s ease;
+}
+
+.masked-text:hover {
+    background-color: rgba(80, 113, 234, 0.6);
+}
+
+.output-button {
+    height: 30px;
+    width: 90px;
+    border: none;
+    border-radius: 17px;
+    font-weight: bold; /* Font weight */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for background color and transform */
+    margin-left: 10px;
+    margin-top: 9px;
+}
+
+/* Hover effect for the buttons */
+.output-button:hover {
+    background-color: rgba(50, 168, 252, 0.283); /* Darker green on hover */
+    transform: scale(1.05); /* Slightly enlarge the button */
+}
+
+/* Focus effect for the buttons */
+.output-button:focus {
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 5px 2px rgba(50, 168, 252, 0.283); /* Custom shadow for focus state */
+}
+
+/* Button container styling */
+.output-button-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 242px;
+    margin-top: 14px;
+}
+
+/* desktop output - */
