@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PII Masker</title>
+    <link rel="stylesheet" href="../static/styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../static/script.js"></script>
+</head>
+<body>
+    <header>
+        <img src="../static/images/headshot.png" class="social-logo" style="border-radius: 50%;">
+        <a href="#"><img src="../static/images/home.png" class="social-logo"></a>
+        <a href="https://github.com/HeJun-C/Python-Data-Science-Projects" target="_blank"><img src="../static/images/github.png" class="social-logo"></a>
+        <a href="https://www.instagram.com/junjunchen620/" target="_blank"><img src="../static/images/ins.png" class="social-logo"></a>
+        <a href="https://www.linkedin.com/in/hejun-chen/" target="_blank"><img src="../static/images/linkedin.png" class="social-logo"></a>
+    </header>
+
+    <div class="grid-layout">
+        <div class="sidebar left"></div>
+        
+        <!-- Main Container -->
+        <div class="main area">
+            <div class="grid-container">
+                <div class="grid-item title">
+                    <div class="APP">
+                        DeBERTa-v3 PII Masking App
+                    </div>
+                    <div style="text-align: center;">
+                        <!-- Click to copy some sample sentences! -->
+                    </div>
+                    <div class="sample-sentence">
+                        <div class="sentence-item" data-sentence="Zephyr Moonstone, residing at 742 Evergreen Terrace Springfield USA, can be reached at +1 (555) 123-4567 or via email at stardust_seeker@galaxymail.com. Their website is www.cosmic-wonders.space, and they use the username cosmic_voyager online. Their employee ID is XR-739-2468-AZ.">
+                            <img src="../static/images/sentence.png" alt="Sample 1">
+                            <p>Copy Sample Input 1</p>
+                        </div>
+                        <div class="sentence-item" data-sentence="Alyssa Stardancer had always been a dreamer, often gazing up at the night sky from her cozy home at 22 Aurora Lane, Nebula Heights, USA. When she isn’t stargazing, you can reach her at +1 (555) 238-7645, or by sending an email to her cosmic inbox at alyssa_dreams@astralworld.com. Her blog, www.lunar-lullabies.org, chronicles her many nocturnal adventures, where she shares tales of the constellations she’s come to know as friends. Online, she’s known as moonlit_wanderer, a name that reflects her love for the mysterious glow of the moon. If you ever need to find her at work, just remember her employee ID: MN-421-3657-QP">
+                            <img src="../static/images/sentence.png"  alt="Sample 2">
+                            <p>Copy Sample Input 2</p>
+                        </div>
+                        <div class="sentence-item" data-sentence="Ever since he was a child, Orion Nebulon was fascinated by the stars. Now, living at 51 Starbeam Avenue, Galaxy's Edge, USA, he spends his nights charting the movements of distant galaxies. Orion can often be found tinkering with his telescope or updating his star maps, but you can always get in touch with him at +1 (555) 987-5643 or via orion_charts@starnet.org. His website, www.celestial-maps.info, serves as a portal to his astronomical discoveries, a space where he shares insights with fellow stargazers. He’s known in the digital world as cosmic_cartographer, a fitting title for someone who maps the heavens. His day job might seem more down-to-earth, but his employee ID, VR-812-4695-ZN, is a small reminder of the cosmos that always calls to him.">
+                            <img src="../static/images/sentence.png"  alt="Sample 3">
+                            <p>Copy Sample Input 3</p>
+                        </div>
+                        <div class="sentence-item" data-sentence="Cassiopeia Vega, residing at 33 Polaris Road, Milky Way Point, USA, has always had a deep connection to the stars, a bond that started when she first laid eyes on the night sky as a child. Now, you can reach her at +1 (555) 328-4759 or by sending an email to cassiopeia_star@cosmosmail.net. Her personal website, www.orbitalsymphony.com, is a reflection of her artistic vision, where she combines music and astronomy to create celestial compositions. Known as stellar_composer in her online circles, Cassiopeia’s work bridges the gap between science and art. By day, she contributes her talents to a different kind of organization, where her ID is noted as ZR-481-7532-KP.">
+                            <img src="../static/images/sentence.png"  alt="Sample 4">
+                            <p>Copy Sample Input 4</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-item about">
+                    <div class="grid-item-banner">
+                        <img src="../static/images/user.png" alt="Icon" class="banner-icon">
+                        About
+                    </div>
+                    <div class="about-content">
+                        Powered by fine-tuned DeBERTa-v3, this named entity recongnition model
+                        detects, classifies, and masks personal identifiable information in user input 
+                        to protect sensitive data. It currently supports to mask name, address, email, 
+                        phone number, id number, personal url, with above 99% accuracy.
+                    </div>
+                </div>
+                <div class="grid-item input">
+                    <div class="grid-item-banner">
+                        <img src="../static/images/user.png" alt="Icon" class="banner-icon">
+                        Input Sentence
+                    </div>
+                    <form id="inputForm">
+                        <textarea id="userInput" name="user_input" required placeholder="Please input your sentence here (-_-)~                                      I will mask personal identifiable information in your input!"></textarea>
+                        <button type="submit" id="input-button">Submit</button>
+                    </form>
+                </div>
+                <div class="grid-item output">
+                    <div class="grid-item-banner">
+                        <img src="../static/images/user.png" alt="Icon" class="banner-icon">
+                        PII Masked Ouput
+                    </div>
+                    <!-- <textarea id="output-area" readonly placeholder="Your masked output will appear here"></textarea> -->
+                    <div id="output-area" contenteditable="false" placeholder="Your output will appear here">
+                    </div>
+                    <div class="output-button-container">
+                        <button id="clear-button" class="output-button">Clear</button>
+                        <button id="copy-button" class="output-button">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar right"></div>
+    </div>
+    <div class="footer">
+        Created by Hejun Chen, 陈贺珺 - 2024
+    </div>
+    
+
+</body>
+</html>
