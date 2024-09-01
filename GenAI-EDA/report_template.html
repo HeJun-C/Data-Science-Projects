@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDA Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        h2 {
+            color: #4CAF50;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 5px;
+        }
+        h3 {
+            color: #2E8B57;
+            font-weight: bold;
+            font-size: 1.25em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .section {
+            background: white;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .section h3.suggestion-title {
+            color: #2E8B57;
+            font-weight: bold;
+            font-size: 1.25em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        p {
+            margin: 10px 0;
+        }
+        ul {
+            margin-top: 5px;
+            margin-bottom: 15px;
+            padding-left: 30px;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        .column-section {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #f9f9f9;
+        }
+        .key-value {
+            margin: 5px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        .key {
+            font-weight: bold;
+            display: inline-block;
+            width: 200px;
+        }
+        .value {
+            display: inline-block;
+            width: calc(100% - 210px);
+        }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .table th, .table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Exploratory Data Analysis Report</h1>
+
+    <!-- ChatGPT Suggestions Section -->
+    <div class="section">
+        <h2>ChatGPT Suggestions</h2>
+        <div>
+            {{ suggestions | safe }}
+        </div>
+    </div>
+
+    <!-- EDA Results for Numeric Columns -->
+    <div class="section">
+        <h2>Notable Statistics for Numeric Columns</h2>
+        {% for col, details in eda_results.numeric_cols.items() %}
+        <div class="column-section">
+            <h3>{{ col }}</h3>
+            <div class="two-column">
+
+                {% if details.get('null_count') is not none %}
+                <div class="key-value"><span class="key">Null Count:</span> <span class="value">{{ details['null_count'] }}</span></div>
+                {% endif %}
+
+                {% if details.get('mean') is not none %}
+                <div class="key-value"><span class="key">Mean:</span> <span class="value">{{ details['mean'] }}</span></div>
+                {% endif %}
+
+                {% if details.get('median') is not none %}
+                <div class="key-value"><span class="key">Median:</span> <span class="value">{{ details['median'] }}</span></div>
+                {% endif %}
+
+                {% if details.get('std') is not none %}
+                <div class="key-value"><span class="key">Standard Deviation:</span> <span class="value">{{ details['std'] }}</span></div>
+                {% endif %}
+
+                {% if details.get('min') is not none %}
+                <div class="key-value"><span class="key">Min:</span> <span class="value">{{ details['min'] }}</span></div>
+                {% endif %}
+
+                {% if details.get('max') is not none %}
+                <div class="key-value"><span class="key">Max:</span> <span class="value">{{ details['max'] }}</span></div>
+                {% endif %}
+
+                {% if details.get('skew') is not none %}
+                <div class="key-value"><span class="key">Skew:</span> <span class="value">{{ details['skew'] }}</span></div>
+                {% endif %}
+
+                {% if details.get('kurtosis') is not none %}
+                <div class="key-value"><span class="key">Kurtosis:</span> <span class="value">{{ details['kurtosis'] }}</span></div>
+                {% endif %}
+
+                {% if details.get('nunique') is not none %}
+                <div class="key-value"><span class="key">Unique Values Count:</span> <span class="value">{{ details['nunique'] }}</span></div>
+                {% endif %}
+
+                {% if details.get('vif') is not none %}
+                <div class="key-value"><span class="key">VIF:</span> <span class="value">{{ details['vif'] }}</span></div>
+                {% endif %}
+            </div>
+
+            {% if details.get('5_random_values') %}
+            <div class="key-value"><span class="key">5 Random Values:</span> <span class="value">{{ details['5_random_values'] }}</span></div>
+            {% endif %}
+            
+            {% if details.get('value_count') %}
+            <div class="key-value"><span class="key">Top 5 Value Counts:</span></div>
+            <table class="table">
+                <tr>
+                    <th>Value</th>
+                    <th>Count</th>
+                </tr>
+                {% for val, count in details['value_count'].items() %}
+                <tr>
+                    <td>{{ val }}</td>
+                    <td>{{ count }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% endif %}
+
+            {% if details.get('corr') %}
+            <div class="key-value"><span class="key">Strong Correlation:</span></div>
+            <table class="table">
+                <tr>
+                    <th>Column</th>
+                    <th>Correlation</th>
+                </tr>
+                {% for corr_col, corr_val in details['corr'].items() %}
+                <tr>
+                    <td>{{ corr_col }}</td>
+                    <td>{{ corr_val }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% endif %}
+
+            <!-- Add Outlier Detection Display -->
+            {% if 'Outlier' in details %}
+            <div class="key-value"><span class="key">Outlier Detected:</span> <span class="value">Yes</span></div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+
+
+
+    <!-- EDA Results for String Columns -->
+    <div class="section">
+        <h2>Notable Statistics for String Columns</h2>
+        {% for col, details in eda_results.string_cols.items() %}
+        <div class="column-section">
+            <h3>{{ col }}</h3>
+            <div class="two-column">
+                {% if details.get('dtype') %}
+                <div class="key-value"><span class="key">Data Type:</span> <span class="value">{{ details['dtype'] }}</span></div>
+                {% endif %}
+
+                {% if details.get('null_count') %}
+                <div class="key-value"><span class="key">Null Count:</span> <span class="value">{{ details['null_count'] }}</span></div>
+                {% endif %}
+
+                {% if details.get('unique_count') %}
+                <div class="key-value"><span class="key">Unique Values Count:</span> <span class="value">{{ details['unique_count'] }}</span></div>
+                {% endif %}
+
+                {% if details.get('avg_len') %}
+                <div class="key-value"><span class="key">Average Token Length:</span> <span class="value">{{ details['avg_len'] }}</span></div>
+                {% endif %}
+
+                {% if details.get('3_random_values') %}
+                <div class="key-value"><span class="key">3 Random Values:</span> <span class="value">{{ details['3_random_values'] }}</span></div>
+                {% endif %}
+            </div>
+
+            {% if details.get('top_3_value_counts') and details['top_3_value_counts'] != "no notable value counts" %}
+            <div class="key-value"><span class="key">Top 3 Value Counts:</span></div>
+            <table class="table">
+                <tr>
+                    <th>Value</th>
+                    <th>Count</th>
+                </tr>
+                {% for val, count in details['top_3_value_counts'].items() %}
+                <tr>
+                    <td>{{ val }}</td>
+                    <td>{{ count }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% else %}
+            <div class="key-value"><span class="key">Top 3 Value Counts:</span> <span class="value">{{ details['top_3_value_counts'] }}</span></div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
